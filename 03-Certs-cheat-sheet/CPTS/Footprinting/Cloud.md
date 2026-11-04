@@ -19,3 +19,16 @@ intext:inlanefreight inurl:queue.core.windows.net
 intext:inlanefreight inurl:file.core.windows.net
 intext:inlanefreight inurl:database.core.windows.net
 ```
+## Source code
+
+Ctrl+U
+
+Ctrl+F : <link or href
+
+## Domain glass
+
+https://domain.glass/
+
+## GrayHat Warfare
+
+https://buckets.grayhatwarfare.com/
