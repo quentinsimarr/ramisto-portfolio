@@ -25,6 +25,8 @@ magic output = script.out	Where the output of the magic script needs to be store
 
 ```
 smbclient -N -L //10.129.14.128
+smbmap -H 10.129.14.128
+crackmapexec smb 10.129.14.128 --shares -u '' -p ''
 ```
 
 ## Smbclient - Connect to share
@@ -47,4 +49,29 @@ smb: \> !cat prep-prod.txt
 
 ```
 sudo nmap 10.129.14.128 -sV -sC -p139,445
+./enum4linux-ng.py 10.129.14.128 -A
+```
+
+## RPCclient
+
+```
+rpcclient -U "" 10.129.14.128
+```
+
+### RPCclient - Enumeration
+
+```
+rpcclient $> srvinfo
+rpcclient $> enumdomains
+rpcclient $> querydominfo
+rpcclient $> netshareenumall
+rpcclient $> enumdomusers
+rpcclient $> queryuser 0x3e8
+rpcclient $> querygroup 0x201
+```
+
+### RPCclient - Brute forcing user RIDs
+
+```
+for i in $(seq 500 1100);do rpcclient -N -U "" 10.129.14.128 -c "queryuser 0x$(printf '%x\n' $i)" | grep "User Name\|user_rid\|group_rid" && echo "";done
 ```
