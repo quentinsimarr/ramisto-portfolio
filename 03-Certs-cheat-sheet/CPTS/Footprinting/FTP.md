@@ -45,4 +45,29 @@ wget -m --no-passive ftp://anonymous:anonymous@10.129.14.136
 
 ```
 On kali -> touch testupload.txt
-On FTP server -> put testupload.txt 
+On FTP server -> put testupload.txt
+```
+
+## Footprinting the service
+
+### Find Nmap NSE scripts
+
+```
+sudo nmap --script-updatedb
+find / -type f -name ftp* 2>/dev/null | grep scripts
+```
+
+### Nmap for FTP
+
+```
+sudo nmap -sV -p21 -sC -A 10.129.14.136
+sudo nmap -sV -p21 -sC -A 10.129.14.136 --script-trace
+```
+
+### FTP interaction
+
+```
+nc -nv 10.129.14.136 21
+telnet 10.129.14.136 21
+openssl s_client -connect 10.129.14.136:21 -starttls ftp
+```
