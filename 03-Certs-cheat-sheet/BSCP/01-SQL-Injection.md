@@ -81,5 +81,5 @@ etc. -> If no error in a column, then it is fine to retrieve the data.
 Précédemment nous avons trouver 2 colonnes de type chaîne de caractères, alors nous pouvons essayer de récupérer les données avec des noms de colonnes assez commun, comme "username" et "password" :
 
 ```
-'+UNION+SELECT+username,+password+FROM+users--
+'+UNION+SELECT+username,password+FROM+users--
 ```
