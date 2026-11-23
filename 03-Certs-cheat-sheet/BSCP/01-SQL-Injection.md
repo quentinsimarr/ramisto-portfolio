@@ -44,7 +44,7 @@ Cette requête SQL renvoie un seul ensemble de résultats avec deux colonnes, co
 
   ### La chaîne d'exploitation
 
-  1) Déterminer le nombre de colonnes renvoyés :
+1) Déterminer le nombre de colonnes renvoyés :
 
 ```
 '+ORDER+BY+1--
