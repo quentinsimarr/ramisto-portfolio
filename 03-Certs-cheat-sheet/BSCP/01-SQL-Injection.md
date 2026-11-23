@@ -40,7 +40,7 @@ Cette requête SQL renvoie un seul ensemble de résultats avec deux colonnes, co
 ### Les conditions pour que cela fonctionne
 
 - Chaque requête doit renvoyer le même nombre de colonnes.
-- Le type renvoyés doit-être une chaîne de caractères.
+- Le type renvoyé doit-être une chaîne de caractères.
 
   ### La chaîne d'exploitation
 
